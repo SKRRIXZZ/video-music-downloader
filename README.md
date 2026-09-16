@@ -16,6 +16,7 @@ Multi-language video & music downloader based on `yt-dlp`, with a nice GUI, thum
 - History (last 30 downloads)
 - Playlist support in music mode
 - 20 interface languages
+- Dark / light theme
 - Autostart with Windows
 
 ---
@@ -24,7 +25,7 @@ Multi-language video & music downloader based on `yt-dlp`, with a nice GUI, thum
 - Windows 10 or 11
 - Internet connection
 - **Python 3.11 or newer** — required even if you use the `.exe` version
-- **FFmpeg** — mandatory for MP3 / FLAC / WAV and best quality
+- **FFmpeg** — mandatory for MP3 / FLAC / WAV and best-quality mode
 
 ---
 
@@ -38,7 +39,9 @@ Open **CMD** (`Win + R` → `cmd` → Enter):
 winget install --id Python.Python.3.12 -e --accept-source-agreements --accept-package-agreements & winget upgrade --id Python.Python.3.12 -e --accept-source-agreements --accept-package-agreements
 ```
 
-**Close and reopen CMD** and verify:
+This command **installs Python if missing** and **updates it if already present**.
+
+Then **close and reopen CMD** and verify:
 
 ```cmd
 py -3 --version
@@ -50,19 +53,27 @@ py -3 --version
 py -3 -m pip install --upgrade pip setuptools wheel
 ```
 
-### Step 3 — Install / update FFmpeg (always, one command)
+### Step 3 — Install FFmpeg (pick one way)
+
+**Option A — via winget (recommended):**
 
 ```cmd
 winget install --id Gyan.FFmpeg -e --accept-source-agreements --accept-package-agreements & winget upgrade --id Gyan.FFmpeg -e --accept-source-agreements --accept-package-agreements
 ```
 
-**Close and reopen CMD**, verify:
+Then **close and reopen CMD** and verify:
 
 ```cmd
 ffmpeg -version
 ```
 
-If not recognized — drop `ffmpeg.exe` next to the app.
+**Option B — offline bundle (no install, no admin rights):**
+
+1. Download `ffmpeg.exe` and `ffprobe.exe` from the [**FFmpeg bundle release**](../../releases/tag/ffmpeg-bundle).
+2. Put **both files next to** `VideoDownloader.exe`.
+3. The app will detect them automatically.
+
+**Without FFmpeg:** MP3 / FLAC / WAV and "best quality" mode will not work.
 
 ---
 
@@ -81,7 +92,7 @@ pythonw video_downloader_multilang.pyw
 ```cmd
 py -3 -m pip install --upgrade pyinstaller yt-dlp Pillow pystray
 ```
-Then double-click the `.bat`. The `.exe` appears in `dist\`.
+Then double-click the `.bat`. The ready `.exe` will appear in `dist\`.
 
 ---
 
@@ -154,10 +165,12 @@ Once a month is enough, unless something stops working — then update right awa
 | Problem | Solution |
 |---|---|
 | `yt-dlp not installed` inside the `.exe` | The `.exe` was built without `yt-dlp`. Install via pip and rebuild |
-| `FFmpeg not found` | Install FFmpeg (Step 3). If winget fails — drop `ffmpeg.exe` next to the app |
+| `FFmpeg not found` | Install FFmpeg (Step 3). If winget fails — download the offline bundle and put both files next to the app |
 | MP3 / FLAC / WAV fail | Without FFmpeg these formats are impossible |
-| `'py' is not recognized` | Reinstall Python with PrependPath (see weather README) |
-| `pip` not found | Use `py -3 -m pip ...` |
+| `'py' is not recognized` | Reinstall Python with PrependPath: `winget install --id Python.Python.3.12 -e --accept-source-agreements --accept-package-agreements --override "/quiet InstallAllUsers=0 PrependPath=1 Include_pip=1 Include_launcher=1"` then reopen CMD |
+| `pip` not found | Use `py -3 -m pip ...` instead of `pip ...` |
+| `winget` not found | Update "App Installer" from Microsoft Store |
+| Download fails on YouTube | Update `yt-dlp`: `py -3 -m pip install --upgrade yt-dlp` |
 
 ---
 
