@@ -96,6 +96,8 @@ Then double-click the `.bat`. The `.exe` appears in `dist\`.
 ---
 ---
 
+---
+
 ## ⚠️ Windows SmartScreen / Defender warning (first launch)
 
 This app is **not digitally signed**. That's why on first launch Windows may show:
@@ -125,6 +127,15 @@ This is a **false positive**. It happens because Windows doesn't recognize the p
 3. Under **Exclusions**, click **Add or remove exclusions**.
 4. Click **Add an exclusion** → **File** → select the `.exe` file.
 5. Run the app again.
+
+**If Defender blocks your `.bat` build:**
+
+PyInstaller "packs" Python code into a single `.exe`, which sometimes looks suspicious to Defender. Just add the project folder to Windows Security exclusions:
+
+1. Open **Windows Security** → **Virus & threat protection** → **Manage settings**.
+2. Under **Exclusions**, click **Add or remove exclusions** → **Add an exclusion** → **Folder**.
+3. Select the folder containing your `.pyw` file and `.bat` script.
+4. Run the `.bat` again.
 
 > 💡 **Safety tip:** You can also upload the `.exe` to [VirusTotal](https://www.virustotal.com/) to verify it before running.
 
