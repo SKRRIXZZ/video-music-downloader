@@ -95,8 +95,6 @@ py -3 -m pip install --upgrade pyinstaller yt-dlp Pillow pystray
 
 ---
 
----
-
 ## ⚠️ Предупреждение Windows SmartScreen / Defender (при первом запуске)
 
 Приложение **не имеет цифровой подписи**. Поэтому при первом запуске Windows может показать:
