@@ -94,50 +94,47 @@ Then double-click the `.bat`. The `.exe` appears in `dist\`.
 6. Watch the progress bar. When done — the entry appears in **Completed**.
 
 ---
----
 
----
+## ⚠️ Предупреждение Windows SmartScreen / Defender (при первом запуске)
 
-## ⚠️ Windows SmartScreen / Defender warning (first launch)
+Приложение **не имеет цифровой подписи**. Поэтому при первом запуске Windows может показать:
 
-This app is **not digitally signed**. That's why on first launch Windows may show:
+- **SmartScreen:** *«Windows защитила ваш компьютер»* (синее окно)
+- **Defender:** *«Это приложение было заблокировано для вашей защиты»*
 
-- **SmartScreen:** *"Windows protected your PC"* (blue dialog)
-- **Defender:** *"This app has been blocked for your protection"*
+Это **ложное срабатывание**. Оно возникает потому, что Windows не знает издателя, а не потому что в приложении есть вирус. Весь исходный код открыт в этом репозитории — ты можешь его проверить и даже собрать `.exe` сам.
 
-This is a **false positive**. It happens because Windows doesn't recognize the publisher — not because the app contains a virus. All source code is available in this repository, so you can inspect it and even build the `.exe` yourself.
+### ✅ Как всё равно запустить
 
-### ✅ How to run it anyway
+**Для SmartScreen (синее окно):**
 
-**For SmartScreen (blue dialog):**
+1. Нажми **Подробнее**.
+2. Нажми **Выполнить в любом случае**.
 
-1. Click **More info**.
-2. Click **Run anyway**.
+**Альтернатива — разблокировать файл навсегда:**
 
-**Alternative — unblock the file permanently:**
+1. Правый клик по скачанному `.exe` → **Свойства**.
+2. Внизу вкладки **Общие** поставь галочку **Разблокировать**.
+3. Нажми **Применить** → **ОК**.
 
-1. Right-click the downloaded `.exe` file → **Properties**.
-2. At the bottom of the **General** tab, check **Unblock**.
-3. Click **Apply** → **OK**.
+**Если Windows Defender блокирует полностью:**
 
-**If Windows Defender blocks it entirely:**
+1. Открой **Безопасность Windows** → **Защита от вирусов и угроз**.
+2. Прокрути вниз до **Параметры защиты от вирусов и угроз** → **Управление настройками**.
+3. В разделе **Исключения** нажми **Добавить или удалить исключения**.
+4. Нажми **Добавить исключение** → **Файл** → выбери `.exe`.
+5. Запусти приложение снова.
 
-1. Open **Windows Security** → **Virus & threat protection**.
-2. Scroll down to **Virus & threat protection settings** → **Manage settings**.
-3. Under **Exclusions**, click **Add or remove exclusions**.
-4. Click **Add an exclusion** → **File** → select the `.exe` file.
-5. Run the app again.
+**Если Defender блокирует `.bat`-сборку:**
 
-**If Defender blocks your `.bat` build:**
+PyInstaller «упаковывает» Python-код в один `.exe`, и это иногда выглядит подозрительно для Defender. Просто добавь папку с проектом в исключения Безопасности Windows:
 
-PyInstaller "packs" Python code into a single `.exe`, which sometimes looks suspicious to Defender. Just add the project folder to Windows Security exclusions:
+1. Открой **Безопасность Windows** → **Защита от вирусов и угроз** → **Управление настройками**.
+2. В разделе **Исключения** нажми **Добавить или удалить исключения** → **Добавить исключение** → **Папка**.
+3. Выбери папку, где лежат твой `.pyw` файл и `.bat`-скрипт.
+4. Запусти `.bat` заново.
 
-1. Open **Windows Security** → **Virus & threat protection** → **Manage settings**.
-2. Under **Exclusions**, click **Add or remove exclusions** → **Add an exclusion** → **Folder**.
-3. Select the folder containing your `.pyw` file and `.bat` script.
-4. Run the `.bat` again.
-
-> 💡 **Safety tip:** You can also upload the `.exe` to [VirusTotal](https://www.virustotal.com/) to verify it before running.
+> 💡 **Совет по безопасности:** можешь загрузить `.exe` на [VirusTotal](https://www.virustotal.com/), чтобы проверить его перед запуском.
 
 ---
 
