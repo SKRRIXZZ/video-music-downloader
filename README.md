@@ -94,6 +94,41 @@ Then double-click the `.bat`. The `.exe` appears in `dist\`.
 6. Watch the progress bar. When done — the entry appears in **Completed**.
 
 ---
+---
+
+## ⚠️ Windows SmartScreen / Defender warning (first launch)
+
+This app is **not digitally signed**. That's why on first launch Windows may show:
+
+- **SmartScreen:** *"Windows protected your PC"* (blue dialog)
+- **Defender:** *"This app has been blocked for your protection"*
+
+This is a **false positive**. It happens because Windows doesn't recognize the publisher — not because the app contains a virus. All source code is available in this repository, so you can inspect it and even build the `.exe` yourself.
+
+### ✅ How to run it anyway
+
+**For SmartScreen (blue dialog):**
+
+1. Click **More info**.
+2. Click **Run anyway**.
+
+**Alternative — unblock the file permanently:**
+
+1. Right-click the downloaded `.exe` file → **Properties**.
+2. At the bottom of the **General** tab, check **Unblock**.
+3. Click **Apply** → **OK**.
+
+**If Windows Defender blocks it entirely:**
+
+1. Open **Windows Security** → **Virus & threat protection**.
+2. Scroll down to **Virus & threat protection settings** → **Manage settings**.
+3. Under **Exclusions**, click **Add or remove exclusions**.
+4. Click **Add an exclusion** → **File** → select the `.exe` file.
+5. Run the app again.
+
+> 💡 **Safety tip:** You can also upload the `.exe` to [VirusTotal](https://www.virustotal.com/) to verify it before running.
+
+---
 
 ## 🔄 Keeping yt-dlp fresh
 YouTube changes frequently. Update yt-dlp regularly:
