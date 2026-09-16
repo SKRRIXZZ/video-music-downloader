@@ -16,6 +16,7 @@
 - История (последние 30 загрузок)
 - Поддержка плейлистов в режиме музыки
 - 20 языков интерфейса
+- Тёмная / светлая тема
 - Автозапуск с Windows
 
 ---
@@ -38,7 +39,9 @@
 winget install --id Python.Python.3.12 -e --accept-source-agreements --accept-package-agreements & winget upgrade --id Python.Python.3.12 -e --accept-source-agreements --accept-package-agreements
 ```
 
-**Закрой и снова открой CMD**, проверь:
+Эта команда **поставит Python, если его нет**, и **обновит, если уже есть**.
+
+Затем **закрой и снова открой CMD**, проверь:
 
 ```cmd
 py -3 --version
@@ -50,19 +53,27 @@ py -3 --version
 py -3 -m pip install --upgrade pip setuptools wheel
 ```
 
-### Шаг 3 — Установить / обновить FFmpeg (всегда, одна команда)
+### Шаг 3 — Установить FFmpeg (выбери один способ)
+
+**Способ A — через winget (рекомендуется):**
 
 ```cmd
 winget install --id Gyan.FFmpeg -e --accept-source-agreements --accept-package-agreements & winget upgrade --id Gyan.FFmpeg -e --accept-source-agreements --accept-package-agreements
 ```
 
-**Закрой и снова открой CMD**, проверь:
+Затем **закрой и снова открой CMD**, проверь:
 
 ```cmd
 ffmpeg -version
 ```
 
-Если не находит — положи `ffmpeg.exe` рядом с приложением.
+**Способ B — офлайн-сборка (без установки, без прав администратора):**
+
+1. Скачай `ffmpeg.exe` и `ffprobe.exe` из [**релиза FFmpeg bundle**](../../releases/tag/ffmpeg-bundle).
+2. Положи **оба файла рядом** с `VideoDownloader.exe`.
+3. Приложение подхватит их автоматически.
+
+**Без FFmpeg:** не будут работать MP3 / FLAC / WAV и режим «лучшее качество».
 
 ---
 
@@ -81,7 +92,7 @@ pythonw video_downloader_multilang.pyw
 ```cmd
 py -3 -m pip install --upgrade pyinstaller yt-dlp Pillow pystray
 ```
-Затем двойной клик по `.bat`. `.exe` появится в `dist\`.
+Затем двойной клик по `.bat`. Готовый `.exe` появится в `dist\`.
 
 ---
 
@@ -154,10 +165,12 @@ py -3 -m pip install --upgrade yt-dlp
 | Проблема | Решение |
 |---|---|
 | `yt-dlp not installed` внутри `.exe` | `.exe` был собран без `yt-dlp`. Установи через pip и пересобери |
-| `FFmpeg not found` | Установи FFmpeg (Шаг 3). Если winget не сработал — положи `ffmpeg.exe` рядом с приложением |
+| `FFmpeg not found` | Установи FFmpeg (Шаг 3). Если winget не сработал — скачай офлайн-бандл и положи оба файла рядом с приложением |
 | MP3 / FLAC / WAV падают | Без FFmpeg эти форматы невозможны |
-| `'py' не является командой` | Переустанови Python с PrependPath (см. README погоды) |
-| `pip` не найден | Используй `py -3 -m pip ...` |
+| `'py' не является командой` | Переустанови Python с PrependPath: `winget install --id Python.Python.3.12 -e --accept-source-agreements --accept-package-agreements --override "/quiet InstallAllUsers=0 PrependPath=1 Include_pip=1 Include_launcher=1"`, потом открой CMD заново |
+| `pip` не найден | Используй `py -3 -m pip ...` вместо `pip ...` |
+| `winget` не найден | Обнови "App Installer" из Microsoft Store |
+| Скачивание падает на YouTube | Обнови `yt-dlp`: `py -3 -m pip install --upgrade yt-dlp` |
 
 ---
 
