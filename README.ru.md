@@ -1,0 +1,122 @@
+# ⬇ Скачиватель видео
+
+Многоязычный скачиватель видео и музыки на базе `yt-dlp` с удобным GUI, превью, живым прогрессом, историей загрузок и поддержкой трея.
+
+[English](README.md) | **Русский**
+
+---
+
+## ✨ Возможности
+- Два режима: **Видео** и **Музыка**
+- Выбор качества: 1080p / 720p / 480p / 360p
+- Аудиоформаты: M4A, MP3, FLAC, WAV
+- Режим «лучшее качество» со слиянием через FFmpeg
+- Автовставка превью (MP4 / MKV / MP3)
+- Живой прогресс-бар, скорость, ETA
+- История (последние 30 загрузок)
+- Поддержка плейлистов в режиме музыки
+- 20 языков интерфейса
+- Автозапуск с Windows
+
+---
+
+## ✅ Требования
+- Windows 10 или 11
+- Интернет
+- **Python 3.11 или новее** — нужен даже для `.exe` версии
+- **FFmpeg** — обязателен для MP3 / FLAC / WAV и лучшего качества
+
+---
+
+## 🚀 Установка
+
+### Шаг 1 — Установить / обновить Python (всегда, одна команда)
+
+Открой **CMD** (`Win + R` → `cmd` → Enter):
+
+```cmd
+winget install --id Python.Python.3.12 -e --accept-source-agreements --accept-package-agreements & winget upgrade --id Python.Python.3.12 -e --accept-source-agreements --accept-package-agreements
+```
+
+**Закрой и снова открой CMD**, проверь:
+
+```cmd
+py -3 --version
+```
+
+### Шаг 2 — Обновить pip, setuptools, wheel (всегда, одна команда)
+
+```cmd
+py -3 -m pip install --upgrade pip setuptools wheel
+```
+
+### Шаг 3 — Установить / обновить FFmpeg (всегда, одна команда)
+
+```cmd
+winget install --id Gyan.FFmpeg -e --accept-source-agreements --accept-package-agreements & winget upgrade --id Gyan.FFmpeg -e --accept-source-agreements --accept-package-agreements
+```
+
+**Закрой и снова открой CMD**, проверь:
+
+```cmd
+ffmpeg -version
+```
+
+Если не находит — положи `ffmpeg.exe` рядом с приложением.
+
+---
+
+## 📥 Установка приложения
+
+### 🟢 A. Если у тебя `.exe` файл
+Двойной клик по `VideoDownloader.exe`. Готово.
+
+### 🟡 B. Если у тебя `.pyw` файл
+```cmd
+py -3 -m pip install --upgrade yt-dlp Pillow pystray
+pythonw video_downloader_multilang.pyw
+```
+
+### 🔴 C. Если у тебя `.bat`, который собирает `.exe`
+```cmd
+py -3 -m pip install --upgrade pyinstaller yt-dlp Pillow pystray
+```
+Затем двойной клик по `.bat`. `.exe` появится в `dist\`.
+
+---
+
+## ▶️ Использование
+1. Выбери режим: **Видео** или **Музыка**.
+2. Вставь ссылку (или нажми **📋** — вставит из буфера и сразу скачает).
+3. Выбери формат / качество.
+4. Выбери папку сохранения.
+5. Нажми **Скачать**.
+6. Следи за прогресс-баром. По завершении запись появится в **Завершённых**.
+
+---
+
+## 🔄 Обновление yt-dlp
+YouTube часто меняется. Обновляй yt-dlp регулярно:
+
+```cmd
+py -3 -m pip install --upgrade yt-dlp
+```
+
+Раз в месяц — достаточно, а если что-то перестало работать — сразу.
+
+---
+
+## 🛠 Проблемы
+
+| Проблема | Решение |
+|---|---|
+| `yt-dlp not installed` внутри `.exe` | `.exe` был собран без `yt-dlp`. Установи через pip и пересобери |
+| `FFmpeg not found` | Установи FFmpeg (Шаг 3). Если winget не сработал — положи `ffmpeg.exe` рядом с приложением |
+| MP3 / FLAC / WAV падают | Без FFmpeg эти форматы невозможны |
+| `'py' не является командой` | Переустанови Python с PrependPath (см. README погоды) |
+| `pip` не найден | Используй `py -3 -m pip ...` |
+
+---
+
+## 📜 Лицензия
+MIT
