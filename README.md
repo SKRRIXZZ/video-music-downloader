@@ -6,6 +6,13 @@ Multi-language video & music downloader based on `yt-dlp`, with a nice GUI, thum
 
 ---
 
+## 📸 Screenshot
+
+Main window<img width="609" height="414" alt="screenshot-main" src="https://github.com/user-attachments/assets/c57c85d1-c7b0-451b-97e5-0c10f0a45b88" />
+
+
+---
+
 ## ✨ Features
 - Two modes: **Video** and **Music**
 - Quality picker: 1080p / 720p / 480p / 360p
