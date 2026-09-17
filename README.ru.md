@@ -6,6 +6,13 @@
 
 ---
 
+## 📸 Скриншот
+
+Главное окно<img width="620" height="414" alt="screenshot-main" src="https://github.com/user-attachments/assets/562225ce-09eb-42f1-9262-2ef359ecd628" />
+
+
+---
+
 ## ✨ Возможности
 - Два режима: **Видео** и **Музыка**
 - Выбор качества: 1080p / 720p / 480p / 360p
