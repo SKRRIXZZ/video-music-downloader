@@ -176,9 +176,9 @@ Once a month is enough, unless something stops working — then update right awa
 
 ## 🔗 More apps by the same author
 
+- 🌤 [Tray Weather](https://github.com/SKRRIXZZ/tray-weather) — live temperature right on the tray icon
 - ⏻ [Shutdown Timer](https://github.com/SKRRIXZZ/shutdown-timer) — PC shutdown / restart / sleep / hibernate timer
 - 🌐 [Mini Translator](https://github.com/SKRRIXZZ/mini-translator) — clipboard translator with a global hotkey
-- ⬇ [Video & Music Downloader](https://github.com/SKRRIXZZ/video-music-downloader) — GUI downloader based on yt-dlp
 
 ---
 
